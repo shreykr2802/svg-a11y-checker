@@ -1,4 +1,4 @@
-import type { SvgElement } from "../types";
+import type { ConfigRules, ResultsType, SvgElement } from "../types";
 
 import ColorContrastChecker from "color-contrast-checker";
 
@@ -85,11 +85,24 @@ function findParentFill(element: SvgElement) {
   return findParentFill(element.parent);
 }
 
-export function runAllChecks(svg: SvgElement) {
-  return {
-    title: checkTitle(svg),
-    description: checkDescription(svg),
-    ariaLabels: checkAriaLabels(svg),
-    contrast: checkContrast(svg),
-  };
+export function runAllChecks(svg: SvgElement, rules: ConfigRules) {
+  const results: ResultsType = {};
+
+  if (rules.requireTitle !== false) {
+    results.title = checkTitle(svg);
+  }
+
+  if (rules.requireDescription !== false) {
+    results.description = checkDescription(svg);
+  }
+
+  if (rules.checkAriaLabel !== false) {
+    results.ariaLabels = checkAriaLabels(svg);
+  }
+
+  if (rules.checkContrast !== false) {
+    results.contrast = checkContrast(svg);
+  }
+
+  return results;
 }
