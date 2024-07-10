@@ -17,21 +17,28 @@ export interface ErrorObject {
   message: string;
 }
 
+type ResultKey = "title" | "description" | "ariaLabels" | "contrast";
+
+export type ResultsType = {
+  [key in ResultKey]?: {
+    passed: boolean;
+    message: string;
+  };
+};
+
 export interface Results {
-  title: {
-    passed: boolean;
-    message: string;
-  };
-  description: {
-    passed: boolean;
-    message: string;
-  };
-  ariaLabels: {
-    passed: boolean;
-    message: string;
-  };
-  contrast: {
-    passed: boolean;
-    message: string;
-  };
+  filePath: string;
+  results: ResultsType;
+}
+
+export type ConfigRules = {
+  requireTitle: boolean;
+  requireDescription: boolean;
+  checkContrast: boolean;
+  checkAriaLabel: boolean;
+};
+
+export interface Config {
+  ignorePatterns: string[];
+  rules: ConfigRules
 }

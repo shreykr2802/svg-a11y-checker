@@ -1,0 +1,9 @@
+{
+    "ignorePatterns": ["node_modules/**", "build/**"],
+    "rules": {
+      "requireTitle": true,
+      "requireDescription": true,
+      "checkContrast": true,
+      "checkAriaLabels": true
+    }
+  }
