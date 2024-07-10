@@ -1,0 +1,19 @@
+{
+  "name": "svg-a11y-checker",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "scripts": {
+    "dev": "bun --hot index.ts"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "color-contrast-checker": "^2.1.0",
+    "commander": "^12.1.0",
+    "svgson": "^5.3.1"
+  }
+}
