@@ -7,14 +7,22 @@ export function generateReport(results: Results[]) {
 
   results.forEach(({ filePath, results: fileResults }) => {
     report += `File: ${filePath}\n`;
-
+    let individualResult = '';
+    let individualPassed = 0;
+    let individualChecked = 0;
     for (const [checkName, result] of Object.entries(fileResults)) {
       report += `${checkName}: ${result.passed ? "PASSED" : "FAILED"}\n`;
       report += `${result.message}\n`;
       totalChecks++;
-      if (result.passed) totalPassed++;
+      individualChecked++;
+      if (result.passed) {
+        totalPassed++;
+        individualPassed++;
+      }
     }
-
+    const individualScore = (individualPassed / individualChecked) * 100;
+    individualResult += `File Score: ${individualScore.toFixed(2)}% (${individualPassed}/${individualChecked} checks passed)\n`
+    report +=  individualResult;
     report += `\n`;
   });
 
