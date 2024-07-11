@@ -225,51 +225,51 @@ function checkUniqueIDs(svg: SvgElement) {
 export function runAllChecks(svg: SvgElement, rules: ConfigRules) {
   const results: ResultsType = {};
 
-  if (rules.requireTitle !== false) {
+  if (rules.requireTitle) {
     results.title = checkTitle(svg);
   }
 
-  if (rules.requireDescription !== false) {
+  if (rules.requireDescription) {
     results.description = checkDescription(svg);
   }
 
-  if (rules.checkAriaLabel !== false) {
+  if (rules.checkAriaLabel) {
     results.ariaLabels = checkAriaLabels(svg);
   }
 
-  if (rules.checkContrast !== false) {
+  if (rules.checkContrast) {
     results.contrast = checkContrast(svg);
   }
 
-  if (rules.checkRoleAttributes !== false) {
+  if (rules.checkRoleAttributes) {
     results.roleAttributes = checkRoleAttributes(svg);
   }
 
-  if (rules.checkTextAlternatives !== false) {
+  if (rules.checkTextAlternatives) {
     results.textAlternatives = checkTextAlternatives(svg);
   }
 
-  if (rules.checkFocusableElements !== false) {
+  if (rules.checkFocusableElements) {
     results.focusableElements = checkFocusableElements(svg);
   }
   
-  if (rules.checkAnimatedContent !== false) {
+  if (rules.checkAnimatedContent) {
     results.animatedContent = checkAnimatedContent(svg);
   }
 
-  if (rules.checkImageText !== false) {
+  if (rules.checkImageText) {
     results.imageText = checkImageText(svg);
   }
 
-  if (rules.checkLanguageDeclaration !== false) {
+  if (rules.checkLanguageDeclaration) {
     results.languageDeclaration = checkLanguageDeclaration(svg);
   }
 
-  if (rules.checkResponsiveScaling !== false) {
+  if (rules.checkResponsiveScaling) {
     results.responsiveScaling = checkResponsiveScaling(svg);
   }
 
-  if (rules.checkUniqueIDs !== false) {
+  if (rules.checkUniqueIDs) {
     results.uniqueIDs = checkUniqueIDs(svg);
   }
 

@@ -14,7 +14,6 @@ import { version } from "./package.json";
 async function analyzeSVG(filePath: string, rules: ConfigRules) {
   const svgString = fs.readFileSync(filePath, "utf8");
   const parsedSVG = await parse(svgString);
-  console.log("parsedSVG", parsedSVG)
   const results = runAllChecks(parsedSVG, rules);
   return { filePath, results };
 }
@@ -36,7 +35,6 @@ async function analyzeDirectory(directory: string) {
   const results = await Promise.all(
     svgFiles.map((file) => analyzeSVG(file, config.rules))
   );
-  console.log("results", results)
   return generateReport(results);
 }
 
@@ -49,11 +47,10 @@ program
   )
   .action(async (options) => {
     try {
-      const report = await analyzeDirectory(options.directory);
+      const report = await analyzeDirectory(options.directory ?? '/');
       console.log(report);
     } catch (error: unknown) {
       console.error("Error analyzing SVG:", (error as ErrorObject).message);
-      console.log(error);
     }
   });
 
