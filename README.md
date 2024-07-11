@@ -2,6 +2,9 @@
 
 Repository to create a checker for svg files and provide report.
 
+[![npm version](https://badge.fury.io/js/svg-a11y-checker.svg)](https://badge.fury.io/js/svg-a11y-checker)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ---
 
 ### **usage**
