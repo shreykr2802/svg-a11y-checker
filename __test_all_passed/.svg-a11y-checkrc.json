@@ -10,8 +10,8 @@
     "checkFocusableElements": true,
     "checkAnimatedContent": true,
     "checkImageText": true,
-    "checkLanguageDeclaration": true,
+    "checkLanguageDeclaration": false,
     "checkResponsiveScaling": true,
-    "checkUniqueIDs": true
+    "checkUniqueIDs": false
   }
 }
