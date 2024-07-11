@@ -48,7 +48,7 @@ export type ConfigRules = {
   requireTitle: boolean;
   requireDescription: boolean;
   checkContrast: boolean;
-  checkAriaLabel: boolean;
+  checkAriaLabels: boolean;
   checkRoleAttributes: boolean;
   checkTextAlternatives: boolean;
   checkFocusableElements: boolean;
