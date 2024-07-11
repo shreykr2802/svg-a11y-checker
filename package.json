@@ -1,11 +1,23 @@
 {
   "name": "svg-a11y-checker",
-  "version": "0.0.3",
+  "version": "1.1.2",
+  "description": "Accessibility checker for SVG images",
   "module": "dist/index.js",
   "type": "module",
   "devDependencies": {
     "@types/bun": "latest"
   },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shreykr2802/svg-a11y-checker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shreykr2802/svg-a11y-checker/issues"
+  },
+  "homepage": "https://github.com/shreykr2802/svg-a11y-checker#readme",
   "bin": {
     "svg-a11y-checker": "./dist/index.js"
   },
@@ -15,6 +27,13 @@
     "start": "bun run ./dist/index.js",
     "prepublishOnly": "bun run build"
   },
+  "keywords": ["svg", "accessibility", "a11y", "checker"],
+  "author": {
+    "name": "Shrey Kumar",
+    "email": "shreykr2802@gmail.com",
+    "url": "https://shreykumar.com"
+  },
+  "license": "MIT",
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
