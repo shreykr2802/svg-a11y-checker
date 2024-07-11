@@ -4,7 +4,7 @@ const DefaultConfig = {
     requireTitle: true,
     requireDescription: true,
     checkContrast: true,
-    checkAriaLabel: true,
+    checkAriaLabels: true,
     checkRoleAttributes: true,
     checkTextAlternatives: true,
     checkFocusableElements: true,

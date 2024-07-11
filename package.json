@@ -1,17 +1,19 @@
 {
   "name": "svg-a11y-checker",
-  "version": "0.0.2",
-  "module": "index.ts",
+  "version": "0.0.3",
+  "module": "dist/index.js",
   "type": "module",
   "devDependencies": {
     "@types/bun": "latest"
   },
   "bin": {
-    "svg-a11y-checker": "./index.ts"
+    "svg-a11y-checker": "./dist/index.js"
   },
   "scripts": {
-    "dev": "bun --hot index.ts",
-    "start": "bun index.ts"
+    "dev": "bun --hot src/index.ts",
+    "build": "bun build ./src/index.ts --outdir ./dist",
+    "start": "bun run ./dist/index.js",
+    "prepublishOnly": "bun run build"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
