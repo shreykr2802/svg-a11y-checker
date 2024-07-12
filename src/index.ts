@@ -23,8 +23,11 @@ function getDirectoryWithConfig(directory?: string) {
   if (fs.existsSync(configPath)) {
     return configPath;
   } else {
-    process.chdir("..");
-    return getDirectoryWithConfig();
+    if(process.cwd() === "/") {
+      process.chdir("..");
+      return getDirectoryWithConfig();
+    }
+    return;
   }
 }
 
