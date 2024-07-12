@@ -12,17 +12,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16.x'
-          registry-url: 'https://registry.npmjs.org'
+      - name: Install Bun
+        run: |
+          curl -fsSL https://bun.sh/install | bash
+          echo 'export BUN_INSTALL="$HOME/.bun"' >> $GITHUB_ENV
+          echo 'export PATH="$BUN_INSTALL/bin:$PATH"' >> $GITHUB_ENV
+        shell: bash
+
+      - name: Verify Bun Installation
+        run: bun --version
 
       - name: Install dependencies
-        run: npm install
+        run: bun install
 
       - name: Build project
-        run: npm run build
+        run: bun run build
 
       - name: Publish to npm
         run: npm publish
