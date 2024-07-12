@@ -19,6 +19,12 @@ jobs:
           echo 'export PATH="$BUN_INSTALL/bin:$PATH"' >> $GITHUB_ENV
         shell: bash
 
+      - name: Set up Bun environment
+        run: |
+          echo "BUN_INSTALL=$HOME/.bun" >> $GITHUB_ENV
+          echo 'PATH=$BUN_INSTALL/bin:$PATH' >> $GITHUB_ENV
+        shell: bash
+
       - name: Verify Bun Installation
         run: bun --version
 
