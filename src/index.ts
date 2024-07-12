@@ -18,9 +18,19 @@ async function analyzeSVG(filePath: string, rules: ConfigRules) {
   return { filePath, results };
 }
 
-function loadConfig(directory: string): Config {
-  const configPath = path.join(directory, ".svg-a11y-checkrc.json");
+function getDirectoryWithConfig(directory?: string) {
+  const configPath = path.join(directory ?? process.cwd(), ".svg-a11y-checkrc.json");
   if (fs.existsSync(configPath)) {
+    return configPath;
+  } else {
+    process.chdir("..");
+    return getDirectoryWithConfig();
+  }
+}
+
+function loadConfig(directory: string): Config {
+  const configPath = getDirectoryWithConfig(directory);
+  if (configPath && fs.existsSync(configPath)) {
     return JSON.parse(fs.readFileSync(configPath, "utf8"));
   }
   return DefaultConfig;
@@ -47,7 +57,7 @@ program
   )
   .action(async (options) => {
     try {
-      const report = await analyzeDirectory(options.directory ?? '/');
+      const report = await analyzeDirectory(options.directory);
       console.log(report);
     } catch (error: unknown) {
       console.error("Error analyzing SVG:", (error as ErrorObject).message);

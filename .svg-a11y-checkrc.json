@@ -8,7 +8,7 @@
     "checkRoleAttributes": true,
     "checkTextAlternatives": true,
     "checkFocusableElements": true,
-    "checkAnimatedContent": true,
+    "checkAnimatedContent": false,
     "checkImageText": true,
     "checkLanguageDeclaration": true,
     "checkResponsiveScaling": true,
