@@ -1,18 +1,11 @@
 ## **svg-a11y-checker**
 
-Repository to create a checker for svg files and provide report.
+Repository to create a checker for svg files and provide report, because enlist doesn't cover all the checks for SVG file.
 
-[![npm version](https://badge.fury.io/js/svg-a11y-checker.svg)](https://badge.fury.io/js/svg-a11y-checker)
+Projects which are SVG heavy and focused to all the audiences, need all the accessibility checks.
+
+[![npm version](https://badge.fury.io/js/svg-a11y-checker.svg)](https://badge.fury.io/js/svg-a11y-checker)  
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
----
-
-### **usage**
-
-*   Scan all the `.svg` files inside the project folder to test.  
-    `bun dev`
-*   Scan specific directory for all the `.svg` files inside it.  
-    `bun start -d ./__test_all_passed`
 
 ---
 
@@ -86,3 +79,54 @@ To override the default checks, `.svg-a11y-checkrc.json` named file with below f
   }
 }
 ```
+
+---
+
+### **usage**
+
+*   run directly `npx svg-a11y-check` to scan through all the svg present in the project folder.
+    *   downside it will do all the 12 checks.
+*   install the package to project  
+    `npm install svg-a11y-checker`, `yarn install svg-a11y-checker`, `pnpm install svg-a11y-checker`, `bun add svg-a11y-checker`.
+    *   add a script eg. `"check-svg": "svg-a11y-checker"`. `npm run svg-a11y-checker`.
+    *   add it along lint script eg. `"lint": "svg-a11y-checker && next lint"`. 
+*   If you need to run it for a specific folder, `npx svg-a11y-check -d ./public/images/svgImages`. This will scan all the svg inside svgImages folder.
+
+---
+
+### sample output
+
+```plaintext
+File: /Users/shreykumar/Documents/nextjs-app/public/moresvg/next.svg
+title: FAILED
+No title element found
+description: FAILED
+No description element found
+ariaLabels: FAILED
+Found 0 elements with aria-label
+contrast: PASSED
+0/0 text elements pass contrast check
+roleAttributes: FAILED
+SVG is missing role="img" attribute
+textAlternatives: FAILED
+SVG is missing text alternative (aria-label or aria-labelledby)
+focusableElements: PASSED
+0/0 interactive elements are focusable
+imageText: PASSED
+No text paths found.
+languageDeclaration: FAILED
+SVG is missing language declaration
+responsiveScaling: PASSED
+SVG uses viewBox for proper scaling
+uniqueIDs: PASSED
+All IDs are unique
+File Score: 45.45% (5/11 checks passed)
+```
+
+---
+
+### future plans
+
+*   more readable output message.
+*   better formatted output message.
+*   colored outputs for Failed and Success messages.
