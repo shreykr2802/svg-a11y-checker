@@ -1,6 +1,6 @@
 {
   "name": "svg-a11y-checker",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Accessibility checker for SVG images",
   "module": "dist/index.js",
   "type": "module",

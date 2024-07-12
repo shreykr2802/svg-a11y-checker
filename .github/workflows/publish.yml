@@ -17,24 +17,31 @@ jobs:
           curl -fsSL https://bun.sh/install | bash
           echo 'export BUN_INSTALL="$HOME/.bun"' >> $GITHUB_ENV
           echo 'export PATH="$BUN_INSTALL/bin:$PATH"' >> $GITHUB_ENV
+          export BUN_INSTALL="$HOME/.bun"
+          export PATH="$BUN_INSTALL/bin:$PATH"
+          bun --version
         shell: bash
-
-      - name: Set up Bun environment
-        run: |
-          echo "BUN_INSTALL=$HOME/.bun" >> $GITHUB_ENV
-          echo 'PATH=$BUN_INSTALL/bin:$PATH' >> $GITHUB_ENV
-        shell: bash
-
-      - name: Verify Bun Installation
-        run: bun --version
 
       - name: Install dependencies
-        run: bun install
+        run: |
+          export BUN_INSTALL="$HOME/.bun"
+          export PATH="$BUN_INSTALL/bin:$PATH"
+          bun install
+        shell: bash
 
       - name: Build project
-        run: bun run build
+        run: |
+          export BUN_INSTALL="$HOME/.bun"
+          export PATH="$BUN_INSTALL/bin:$PATH"
+          bun run build
+        shell: bash
 
       - name: Publish to npm
-        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+          export BUN_INSTALL="$HOME/.bun"
+          export PATH="$BUN_INSTALL/bin:$PATH"
+          npm publish
+        shell: bash
